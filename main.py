@@ -1,4 +1,5 @@
-from models import Cliente, ContaCorrente
+from cliente import Cliente
+from conta_corrente import ContaCorrente
 from exceptions import SemSaudoError
 
 try:
