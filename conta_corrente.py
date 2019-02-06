@@ -30,7 +30,6 @@ class ContaCorrente:
             raise OperacaoFinanceiraError('Operação não realizada: ', E)
 
         favorecido.depositar(valor)
-        return self
     
     def sacar(self, valor):
         if valor <0:
@@ -39,11 +38,9 @@ class ContaCorrente:
             raise SemSaudoError
         
         self.saldo -= valor
-        return self
 
     def depositar(self, valor):
         if valor <0:
             raise ValueError('O valor depositado não pode ser negativo')
         
         self.saldo += valor
-        return self
