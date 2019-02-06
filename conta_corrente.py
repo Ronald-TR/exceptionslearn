@@ -6,7 +6,8 @@ class ContaCorrente:
     total_contas_criadas = 0
     transferencias_nao_permitidas = 0
     def __init__(self, cliente, agencia, numero):
-        assert (type(cliente) is Cliente), 'O titular deve ser do tipo Cliente'
+        if not isinstance(cliente, Cliente):
+            raise TypeError('O titular deve ser do tipo Cliente')
         
         if agencia  <= 0:
             raise ValueError(f'O argumento agencia deve ser maior que 0.", {agencia}')
@@ -21,7 +22,7 @@ class ContaCorrente:
         ContaCorrente.total_contas_criadas += 1
 
     def transferir(self, valor, favorecido):
-        if not type(favorecido) is ContaCorrente:
+        if not isinstance(favorecido, ContaCorrente):
             raise TypeError('O favorecido deve ser um objeto do tipo ContaCorrente')
         try:
             self.sacar(valor)
